@@ -1,0 +1,9 @@
+apiVersion: v2
+name: vat-calculator
+description: A simple Helm chart example to deploy a vat calculator application with exposing service
+
+type: application
+
+version: 1.0.0
+
+appVersion: "1.0.0"

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-vatcal-deployment
+  labels:
+    app: vatcal
+    release: {{ .Release.Name }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vatcal
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: vatcal
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - image: agray998/vatcal:{{ .Values.app.version }}
+        name: vatcal
+        resources:
+          requests:
+            cpu: 50m
+            memory: 8Mi
+          limits:
+            cpu: 100m
+            memory: 16Mi
+        ports:
+        - containerPort: 80
+
